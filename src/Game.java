@@ -22,7 +22,7 @@ public class Game {
         System.out.println("4. Keluar\n");
 
         while (true) {
-            System.out.println(player.getName() + " memilih gerakan (1, 2, 3):");
+            System.out.print(player.getName() + " memilih gerakan (1, 2, 3): ");
             String input1 = scanner.nextLine();
 
             if (input1.equals("4")) {
