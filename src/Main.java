@@ -7,6 +7,7 @@ public class Main {
         // nyoba ngebug 😁
         try (Scanner scanner = new Scanner(System.in)) {
             // disini masukin nama usernya
+            // disini pake print() bukan println() biar inputannya ga kebawah
             System.out.print("Masukkan nama: ");
             String name = scanner.nextLine();
 
