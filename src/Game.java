@@ -5,12 +5,15 @@ public class Game {
     private Player bot;
     private Scanner scanner;
 
+    // ini fungsi yang namanya sama kayak nama classnya, sebutannya constructor, dia
+    // bakal dipanggil pertama kali pas bikin objek
     public Game(String name1) {
         player = new Player(name1, false);
         bot = new Player("Bot", true);
         scanner = new Scanner(System.in);
     }
 
+    // ini fungsi buat mulai gamenya
     public void mulai() {
         System.out.println("Permainan Batu Kertas Gunting");
         System.out.println("1. Batu");
@@ -21,17 +24,22 @@ public class Game {
         while (true) {
             System.out.println(player.getName() + " memilih gerakan (1, 2, 3):");
             String input1 = scanner.nextLine();
+
             if (input1.equals("4")) {
+                // kalo user input 4, berarti dia mau keluar, jadi break loopnya
                 break;
             }
 
             Gerakan gerakanPemain = Gerakan.fromString(Integer.parseInt(input1));
             if (gerakanPemain == null) {
                 System.out.println("Gerakan tidak valid");
+                // kalo inputnya ga valid, lanjut ke iterasi berikutnya, jadi gak keluar loop
                 continue;
             }
 
+            // manggil fungsi gerakanBot buat nentuin pilihan botnya secara random
             Gerakan gerakanBot = bot.gerakanBot();
+
             System.out.println("\n" + player.getName() + " memilih " + gerakanPemain);
             System.out.println(bot.getName() + " memilih " + gerakanBot);
 
@@ -41,6 +49,7 @@ public class Game {
         System.out.println("Terima kasih sudah bermain");
     }
 
+    // yang ini gaperlu dijelasin, dia buat nentuin pemenangnya
     private void tentukanPemenang(Gerakan gerakanPemain, Gerakan gerakanBot) {
         if (gerakanPemain == gerakanBot) {
             System.out.println("\nHasil: Seri\n");
